@@ -5,7 +5,9 @@ import argparse
 def get_options(parser):
 
     ## Config file
-    parser.add_argument("--config_file",type=str)
+    parser.add_argument(
+        "--config_file", "--config-file", dest="config_file", required=True
+    )
     parser.add_argument("--gpu_id", default=0, type=int)
     
     

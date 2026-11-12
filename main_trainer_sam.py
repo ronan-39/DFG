@@ -4,7 +4,7 @@ os.environ['CUDA_VISIBLE_DEVICES']='0'
 import argparse
 import shutil
 import time
-from trainers import SAM_Trainer,CL_Trainer,PseudoLabel_Trainer,SAM_Trainer_prostate,SAM_Trainer_curvas
+from trainers import SAM_Trainer
 import json
 import glob
 import itertools
