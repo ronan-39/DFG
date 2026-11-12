@@ -1,0 +1,49 @@
+# Source-domain segmentation training for BARTS.
+experiment_name: 'UNet_BARTS_source_seg'
+data_root: '/home/ronan/Documents/GitHub/DFG/data/speech_preproc'
+save_root: '/home/ronan/Documents/GitHub/DFG/results/Source_Seg'
+source_sites:
+- 'barts'
+resume_dir: ''
+continue_train: False
+total_epochs: 100
+random_seed: 999
+
+# Four foreground classes plus background. Keep this order consistent with the
+# class IDs stored in the masks.
+organ_list:
+- 'class_1'
+- 'class_2'
+- 'class_3'
+- 'class_4'
+
+# Dataloader settings
+img_size:
+- 256
+- 256
+batch_size: 16
+num_workers: 8
+eval_2d: True
+
+# Model
+arch: 'UNet'
+use_prototype: False
+update_prototype: False
+input_dim: 3
+feat_dim: 32
+output_dim: 64
+num_classes: 5
+
+# Optim parameters
+lr: 0.0003
+
+# Loss parameters
+ce_ignore_index: -1
+dice_ignore_index: 0
+
+# Display
+save_epochs: 10
+eval_epochs: 1
+display_steps: 100
+save_visuals: False
+test: False

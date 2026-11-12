@@ -1,0 +1,58 @@
+# BARTS -> USC SAM refinement and final target training.
+experiment_name: 'SAM_UNet_BARTS_to_USC'
+data_root: '/home/ronan/Documents/GitHub/DFG/data/speech_preproc'
+save_root: '/home/ronan/Documents/GitHub/DFG/results/Target_Adapt'
+
+# Replace this with the best checkpoint produced by main_trainer_fa.py.
+source_model_path: '/home/ronan/Documents/GitHub/DFG/results/Target_Adapt/FA_UNet_BARTS_to_USC/REPLACE_WITH_FA_CHECKPOINT.pth'
+target_sites:
+- 'USC'
+resume_dir: ''
+continue_train: False
+total_epochs: 100
+
+# These empty directories are created by preprocess_speech.py.
+refine_dir: '/home/ronan/Documents/GitHub/DFG/data/speech_preproc/USC_refine'
+refine_postprocess_dir: '/home/ronan/Documents/GitHub/DFG/data/speech_preproc/USC_refine_postprocess'
+
+random_seed: 999
+
+# Four foreground classes plus background.
+organ_list:
+- 'class_1'
+- 'class_2'
+- 'class_3'
+- 'class_4'
+
+# Dataloader settings
+patient_level_dataloader: False
+img_size:
+- 256
+- 256
+batch_size: 8
+num_workers: 8
+eval_2d: True
+
+# Model
+arch: 'UNet'
+use_prototype: False
+update_prototype: False
+input_dim: 3
+feat_dim: 32
+output_dim: 64
+num_classes: 5
+num_prototypes: 1
+
+# Optim parameters
+lr: 0.0001
+
+# Loss parameters
+ce_ignore_index: -1
+dice_ignore_index: 0
+
+# Display and evaluation
+save_epochs: 100
+eval_epochs: 5
+display_steps: 40000
+save_visuals: False
+test: False
