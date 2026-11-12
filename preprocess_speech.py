@@ -36,16 +36,16 @@ import numpy as np
 
 
 DEFAULT_SOURCE = Path(
-    "/home/shared/datasets/speech_preproc/BARTS_preprocessed_4train"
+    "/home/ronan/Documents/Datasets/speech_preproc/BARTS_preprocessed_4train"
 )
 DEFAULT_TARGET_TRAIN = Path(
-    "/home/shared/datasets/speech_preproc/USC75_preprocessed_4train"
+    "/home/ronan/Documents/Datasets/speech_preproc/USC75_preprocessed_4train"
 )
 DEFAULT_TARGET_TEST = Path(
-    "/home/shared/datasets/speech_preproc/USC16_preprocessed_4test"
+    "/home/ronan/Documents/Datasets/speech_preproc/USC16_preprocessed_4test"
 )
 DEFAULT_OUTPUT_ROOT = Path(
-    "/home/ronan/Documents/GitHub/DFG/data/speech_preproc"
+    "/home/ronan/Documents/Code/DFG/data/speech_preproc"
 )
 
 FRAME_RE = re.compile(r"frame[_-]?(\d+)", re.IGNORECASE)

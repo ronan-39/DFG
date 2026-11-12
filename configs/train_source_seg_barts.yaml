@@ -1,7 +1,7 @@
 # Source-domain segmentation training for BARTS.
 experiment_name: 'UNet_BARTS_source_seg'
-data_root: '/home/ronan/Documents/GitHub/DFG/data/speech_preproc'
-save_root: '/home/ronan/Documents/GitHub/DFG/results/Source_Seg'
+data_root: '/home/ronan/Documents/Code/DFG/data/speech_preproc'
+save_root: '/home/ronan/Documents/Code/DFG/results/Source_Seg'
 source_sites:
 - 'barts'
 resume_dir: ''

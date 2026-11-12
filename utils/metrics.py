@@ -89,9 +89,10 @@ def MultiIoUScore(preds,target,num_classes,include_bg=False):
     return iou_score_list
 
 def cal_average_surface_distance(input,target):
-    input = input.cpu().numpy().astype(np.bool8)
-    target = target.cpu().numpy().astype(np.bool8)
-    surface_distances = surfdist.compute_surface_distances(input, target, spacing_mm=(1.0, 1.0, 1.0))###(1.0, 1.0, 1.0)
+    input = input.cpu().numpy().astype(np.bool_)
+    target = target.cpu().numpy().astype(np.bool_)
+    spacing_mm = (1.0,) * input.ndim
+    surface_distances = surfdist.compute_surface_distances(input, target, spacing_mm=spacing_mm)
     avg_surf_dist = surfdist.compute_average_surface_distance(surface_distances)
     return (avg_surf_dist[0]+avg_surf_dist[1])/2
 

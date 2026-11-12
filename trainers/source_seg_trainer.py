@@ -211,7 +211,7 @@ class SourceDomainTrainer():
                     val_iterator.set_description(f'Eval Epoch [{epoch}/{self.total_epochs}]')
                     val_iterator.set_postfix(ce_loss = val_losses['val_ce'].item()/(it+1), dc_loss = val_losses['val_dc'].item()/(it+1))
 
-                    if 'eval_2d' not in self.opt:
+                    if not self.opt.get('eval_2d', False):
                         for i,name in enumerate(val_names):
 
                             sample_name,index = name.split('_')[0],int(name.split('_')[1])
@@ -223,7 +223,7 @@ class SourceDomainTrainer():
                 for k, v in val_losses.items():
                     val_losses[k] = v/(len(self.val_dataloader)+1)   
                     
-                if 'eval_2d' not in self.opt:
+                if not self.opt.get('eval_2d', False):
                     pred_results_list = []
                     gt_segs_list = []
                     for k in sample_dict.keys():

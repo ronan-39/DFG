@@ -209,7 +209,7 @@ class FA_Trainer():
                             val_segs = val_segs.to(self.opt['gpu_id'])
 
                             predict = self.validate_one_step([val_imgs, val_segs])
-                            if 'eval_2d' not in self.opt:
+                            if not self.opt.get('eval_2d', False):
                                 for i,name in enumerate(val_names):
 
                                     sample_name,index = name.split('_')[0],int(name.split('_')[1])
@@ -218,7 +218,7 @@ class FA_Trainer():
                                 for i,name in enumerate(val_names):
                                     sample_list.append((predict[i].detach().cpu().argmax(dim=0),val_segs[i].detach().cpu()))
                         
-                        if 'eval_2d' not in self.opt:    
+                        if not self.opt.get('eval_2d', False):
                             pred_results_list = []
                             gt_segs_list = []
                             
@@ -268,4 +268,3 @@ class FA_Trainer():
             self.iter_counter.record_one_epoch()
 
 
-                
